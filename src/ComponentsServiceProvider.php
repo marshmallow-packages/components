@@ -29,20 +29,21 @@ class ComponentsServiceProvider extends ServiceProvider
     protected function configureComponents()
     {
         $this->callAfterResolving(BladeCompiler::class, function () {
-            $this->registerComponent('default-input');
-            $this->registerComponent('email');
-            $this->registerComponent('errors');
-            $this->registerComponent('error');
-            $this->registerComponent('input');
-            $this->registerComponent('label');
-            $this->registerComponent('link-button-secondary');
-            $this->registerComponent('link-button');
             $this->registerComponent('button');
-            $this->registerComponent('confirmation-modal');
+            $this->registerComponent('outline-button');
+            $this->registerComponent('secondary-button');
+            $this->registerComponent('white-button');
+            $this->registerComponent('default-input');
+            $this->registerComponent('label');
+            $this->registerComponent('input');
+            $this->registerComponent('error');
+            $this->registerComponent('email');
             $this->registerComponent('number');
             $this->registerComponent('password');
             $this->registerComponent('select');
             $this->registerComponent('textarea');
+
+            $this->registerComponent('errors');
         });
     }
 
