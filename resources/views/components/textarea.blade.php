@@ -12,5 +12,5 @@
         <span x-html="count"></span> / <span x-html="maxCount"> </span> karakters
     </div>
 
-    <x-forms.input-error for="{{ $attributes['id'] }}" />
+    <x-mm-error for="{{ $attributes['id'] }}" />
 </div>
