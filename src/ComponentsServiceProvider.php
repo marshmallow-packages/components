@@ -41,6 +41,8 @@ class ComponentsServiceProvider extends ServiceProvider
             $this->registerComponent('number');
             $this->registerComponent('password');
             $this->registerComponent('select');
+            $this->registerComponent('radio');
+            $this->registerComponent('checkbox');
             $this->registerComponent('textarea');
 
             $this->registerComponent('errors');
@@ -65,7 +67,7 @@ class ComponentsServiceProvider extends ServiceProvider
      */
     protected function configurePublishing()
     {
-        if (! $this->app->runningInConsole()) {
+        if (!$this->app->runningInConsole()) {
             return;
         }
 

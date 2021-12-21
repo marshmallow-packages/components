@@ -1,13 +1,24 @@
-@props(['required' => null, 'value' => null, 'autofocus' => null])
+@props(['required' => null, 'type' => 'text', 'value' => null, 'autofocus' => null, 'width' => 'full'])
 
-<div class="relative mt-1">
-    <x-mm-default-input :required="$required" :id="$attributes['id']" :type="$attributes['type']"
-        :name="$attributes['name']" :value="$value" :autofocus="$autofocus" type="{{ $attributes['type'] ?? 'text' }}"
-        wire:model="{{ $attributes['name'] }}" :placeholder="$attributes['placeholder'] ?? ' '"
-        :autocomplete="$attributes['autocomplete'] ?? ' '" />
+@php
+
+$placeholder = $attributes['placeholder'];
+
+if (!$required) {
+    $placeholder .= ' (optioneel)';
+    $required = false;
+}
+
+@endphp
+
+<div class="relative w-full">
+
     <x-mm-label :required="$required" for="{{ $attributes['id'] }}"> {{ $attributes['placeholder'] ?? ' ' }}
     </x-mm-label>
-    <div class="pt-2">
-        <x-mm-error for="{{ $attributes['id'] }}" />
-    </div>
+
+    <x-mm-default-input class="w-full" :required="$required" :id="$attributes['id']" :type="$attributes['type']"
+        :name="$attributes['name']" :value="$value" :autofocus="$autofocus" type="{{ $attributes['type'] ?? 'text' }}"
+        wire:model.defer="{{ $attributes['name'] }}" :placeholder="$placeholder"
+        :autocomplete="$attributes['autocomplete'] ?? ' '" />
+    <x-mm-error for="{{ $attributes['id'] }}" />
 </div>
