@@ -67,7 +67,7 @@ class ComponentsServiceProvider extends ServiceProvider
      */
     protected function configurePublishing()
     {
-        if (!$this->app->runningInConsole()) {
+        if (! $this->app->runningInConsole()) {
             return;
         }
 
