@@ -1,45 +1,42 @@
-@props(['required' => null, 'width' => 'full', 'value' => null, 'autofocus' => null, 'options'])
+@props(['required' => null, 'type' => 'text', 'value' => null, 'autofocus' => null, 'width' => 'full', 'hideLabel' => false, 'options' => []])
+
+@php
+
+$placeholder = $attributes['placeholder'];
+
+if (!$required) {
+    if (!$hideLabel) {
+        $placeholder .= ' (optioneel)';
+    }
+    $required = false;
+}
+
+@endphp
+
 
 <div class="relative w-full">
 
-    <x-mm-label :required="$required" for="{{ $attributes['id'] }}">
-        {{ $attributes['placeholder'] ?? ' ' }}
-    </x-mm-label>
+    @if (!$hideLabel)
+        <x-mm-label :required="$required" for="{{ $attributes['id'] }}"> {{ $attributes['placeholder'] ?? ' ' }}
+        </x-mm-label>
+    @endif
 
-    <fieldset class="grid grid-cols-6 gap-6" wire:model.defer="{{ $attributes['name'] }}">
-
-        @foreach ($options as $value => $option)
-            @if ($value !== '' && !is_null($value))
-                <div class="col-span-6 sm:col-span-3">
-                    <legend class="sr-only">
-                        {{ $option }}
-                    </legend>
-                    <div class="space-y-4">
-
-                        <label
-                            class="relative block px-6 py-4 bg-white border rounded-lg shadow-sm cursor-pointer border-gray-400/40 hover:border-blue-500 sm:flex sm:justify-between focus:outline-none">
-                            <input type="radio" id="option-{{ $value }}" name="{{ $attributes['name'] }}"
-                                value="{{ $value }}" aria-labelledby="server-size-2-label"
-                                aria-describedby="server-size-2-description-0 server-size-2-description-1">
-                            <div class="flex items-center">
-                                <div class="text-sm">
-                                    <p id="server-size-2-label" class="font-medium text-gray-800">
-                                        {{ $option }}
-                                    </p>
-                                    <div id="server-size-1-description-0" class="text-gray-500">
-                                        <p class="sm:inline"> {{ $option }}</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </label>
-                    </div>
-                </div>
-            @endif
-
+    <div class="mt-2 space-y-4 md:mt-4">
+        @foreach ($options as $option)
+            <div class="flex items-center ml-2 ">
+                <input wire:model="{{ $attributes['name'] }}" id="id_{{ $attributes['id'] }}_{{ $option['id'] }}"
+                    name="{{ $attributes['name'] }}" type="radio" value="{{ $option['id'] }}"
+                    @if ($attributes['x-on:change']) x-on:change="{{ $attributes['x-on:change'] }}" @endif
+                    class="w-4 h-4 border-gray-300 peer text-gold-500 focus:ring-gold-500/30">
+                <label for="id_{{ $attributes['id'] }}_{{ $option['id'] }}"
+                    class="block ml-3 text-sm font-medium text-gray-700 peer-focus:font-semibold peer-checked:font-semibold">
+                    {{ $option['title'] }}
+                    @if ($option['tooltip'])
+                        <x-mm-tooltip id="{{ $option['id'] . md5($option['tooltip']) }}" :content="$option['tooltip']" />
+                    @endif
+                </label>
+            </div>
         @endforeach
-    </fieldset>
-
-    <x-mm-error for="{{ $attributes['id'] }}" />
-
+        <x-mm-error for="id_{{ $attributes['id'] }}_{{ $option['id'] }}" />
+    </div>
 </div>

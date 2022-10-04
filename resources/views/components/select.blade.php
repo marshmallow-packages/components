@@ -1,30 +1,42 @@
-@props(['required' => null, 'width' => 'full', 'value' => null, 'autofocus' => null, 'options'])
+@props(['required' => null, 'type' => 'text', 'value' => null, 'autofocus' => null, 'width' => 'full', 'hideLabel' => false, 'options' => [], 'question' => null])
+
+@php
+
+$placeholder = $attributes['placeholder'];
+
+if (!$required) {
+    if (!$hideLabel) {
+        $placeholder .= ' (optioneel)';
+    }
+    $required = false;
+}
+
+$class = 'appearance-none border-gray-400/40 placeholder:text-sm text-gray-700 focus:border-gold-300 disabled:italic disabled:bg-gray-300/20 bg-white/50 relative py-2.5 focus:ring focus:ring-gold-200 focus:ring-opacity-50 rounded-md text-[0.9rem] w-full';
+
+@endphp
+
+@error($attributes['id'])
+    @php
+        $class = 'border-red-500/40 ' . $class;
+    @endphp
+@enderror
+
 
 <div class="relative w-full">
-
-    <x-mm-label :required="$required" for="{{ $attributes['id'] }}">
-        {{ $attributes['placeholder'] ?? ' ' }}
-    </x-mm-label>
-
-    <select
-        class="border-[#d3d6e0] w-full text-base focus:border-orange-300 focus:placeholder-gray-600 py-2.5 placeholder-[#d3d6e0] focus:ring-0  rounded shadow-sm"
-        wire:model.defer="{{ $attributes['name'] }}">
-
-        <option class="text-[#d3d6e0]" selected hidden>
+    @if (!$hideLabel)
+        <x-mm-tooltip-label :required="$required" for="{{ $attributes['id'] }}" :placeholder="$attributes['placeholder']" :question="$question" />
+    @endif
+    <select id="{{ $attributes['id'] }}" wire:model.defer="{{ $attributes['name'] }}"
+        @if ($attributes['x-on:change']) x-on:change="{{ $attributes['x-on:change'] }}" @endif
+        class="{{ $class }}">
+        <option value="" hidden selected>
             {{ __('Maak een keuze') }}
         </option>
-
         @foreach ($options as $value => $option)
-            @if ($value !== '' && !is_null($value))
-                <option value="{{ $value }}">
-                    {{ $option }}
-                </option>
-            @endif
-
+            <option value="{{ $value }}">
+                {{ $option }}
+            </option>
         @endforeach
     </select>
-
-
     <x-mm-error for="{{ $attributes['id'] }}" />
-
 </div>

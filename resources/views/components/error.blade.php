@@ -1,6 +1,12 @@
-@props(['for'])
+@props(['for', 'icon' => true])
 
 @error($for)
-    <span {{ $attributes->merge(['class' => 'mt-2 text-sm text-red-600']) }}><i class="mr-1 fas fa-times-circle"></i>
-        {{ $message }}</span>
+    <div {{ $attributes->merge(['class' => 'mt-1 text-sm']) }}>
+        <span {{ $attributes->merge(['class' => ' text-sm text-red-500']) }}>
+            @if ($icon)
+                <i class="mr-1 fa-duotone fa-circle-exclamation"></i>
+            @endif
+            {{ $message }}
+        </span>
+    </div>
 @enderror

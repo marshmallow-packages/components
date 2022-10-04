@@ -1,7 +1,54 @@
-@props(['disabled' => false])
+@props(['required' => null, 'type' => 'number', 'min' => null, 'max' => null, 'value' => null, 'autofocus' => null, 'width' => 'full', 'hideLabel' => false, 'readonly' => null, 'disabled' => false])
 
-<input {{ $disabled ? 'disabled' : '' }} {!! $attributes->merge([
-    'class' => ' w-24 px-4 py-5 mt-2
-    text-3xl font-semibold text-center bg-[#fff] border-b-0 border-l-0 relative border-r-0 border-pink-500
-    bg-opacity-100 focus:bg-opacity-100 border-t-[5px] placeholder:text-gray-400 focus:border-green-500 focus:ring-green-500',
-]) !!} type="number">
+@php
+
+$placeholder = $attributes['placeholder'];
+
+$defer = false;
+$lazy = false;
+if ($attributes->has('defer')) {
+    $defer = $attributes['defer'] == 'true' || $attributes['defer'] == true;
+}
+
+if ($attributes->has('lazy')) {
+    $lazy = $attributes['lazy'] == 'true' || $attributes['lazy'] == true;
+}
+
+$required = $required == 1 || $required == true ? true : false;
+
+if (!$required) {
+    $placeholder .= ' (optioneel)';
+    $required = false;
+}
+@endphp
+
+
+<div class="relative w-full">
+
+    @if (!$hideLabel)
+        <x-mm-label :required="$required" for="{{ $attributes['id'] }}">
+            {{ $attributes['label'] ?? $attributes['placeholder'] }}
+        </x-mm-label>
+    @endif
+
+    @if ($defer)
+        <x-mm-default-input class="w-full" :required="$required" :id="$attributes['id']" :min="$min" :max="$max"
+            :type="$attributes['type']" :name="$attributes['name']" :value="$value" :autofocus="$autofocus"
+            type="{{ $attributes['type'] ?? 'number' }}" wire:model.defer="{{ $attributes['name'] }}"
+            x-mask.blocks="[{{ $max ? Str::of($max)->length : 9999 }}]" :placeholder="$placeholder" :autocomplete="$attributes['autocomplete'] ?? ' '"
+            :readonly="$readonly" :disabled="$disabled" />
+    @elseif($lazy)
+        <x-mm-default-input class="w-full" :required="$required" :id="$attributes['id']" :min="$min" :max="$max"
+            :type="$attributes['type']" :name="$attributes['name']" :value="$value" :autofocus="$autofocus"
+            type="{{ $attributes['type'] ?? 'number' }}" wire:model.lazy="{{ $attributes['name'] }}"
+            x-mask.blocks="[{{ $max ? Str::of($max)->length : 9999 }}]" :placeholder="$placeholder" :autocomplete="$attributes['autocomplete'] ?? ' '"
+            :readonly="$readonly" :disabled="$disabled" />
+    @else
+        <x-mm-default-input class="w-full" :required="$required" :id="$attributes['id']" :min="$min" :max="$max"
+            :type="$attributes['type']" :name="$attributes['name']" :value="$value" :autofocus="$autofocus"
+            type="{{ $attributes['type'] ?? 'number' }}" wire:model="{{ $attributes['name'] }}"
+            x-mask.blocks="[{{ $max ? Str::of($max)->length : 9999 }}]" :placeholder="$placeholder" :autocomplete="$attributes['autocomplete'] ?? ' '"
+            :readonly="$readonly" :disabled="$disabled" />
+    @endif
+    <x-mm-error for="{{ $attributes['id'] }}" />
+</div>
