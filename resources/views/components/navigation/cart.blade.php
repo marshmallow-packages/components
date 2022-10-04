@@ -1,10 +1,9 @@
 <div x-data="{ cartOpen: false }" x-on:click.outside="cartOpen = false" x-on:close.stop="cartOpen = false"
-    x-on:mouseover.away.debounce="cartOpen = false" x-on:mouseover.enter.debounce.100ms="cartOpen = true"
-    class="block ">
+    x-on:mouseover.away.debounce="cartOpen = false" x-on:mouseover.enter.debounce.100ms="cartOpen = true" class="block ">
 
     <div x-on:click="cartOpen = ! cartOpen"
-        class="px-4 py-2 mx-auto font-sans text-sm font-bold text-center text-gray-700 uppercase cursor-pointer md:py-3 hover:text-gold-500 hover:bg-gold-50"
-        :class="{'text-gray-700 ': !cartOpen, 'bg-gold-50 text-gold-500': cartOpen}">
+        class="px-4 py-2 mx-auto font-sans text-sm font-bold text-center text-gray-700 uppercase cursor-pointer md:py-3 hover:text-primary-500 hover:bg-primary-50"
+        :class="{ 'text-gray-700 ': !cartOpen, 'bg-primary-50 text-primary-500': cartOpen }">
         <i class="fa-solid fa-cart-shopping"></i>
     </div>
 

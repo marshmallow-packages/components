@@ -1,5 +1,5 @@
 @php
-$class = 'inline-flex items-center justify-center w-full px-6 py-2 font-semibold text-gray-500 transition duration-200 ease-in-out transform bg-transparent border rounded-md shadow-sm cursor-pointer text-md button border-gray-500/20 disabled:opacity-25 hover:border-gold-600 hover:text-white hover:shadow-sm hover:bg-gold-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gold-300/80 whitespace-nowrap disabled:cursor-not-allowed';
+$class = 'inline-flex items-center justify-center w-full px-6 py-2 font-semibold text-gray-500 transition duration-200 ease-in-out transform bg-transparent border rounded-md shadow-sm cursor-pointer text-md button border-gray-500/20 disabled:opacity-25 hover:border-primary-600 hover:text-white hover:shadow-sm hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-300/80 whitespace-nowrap disabled:cursor-not-allowed';
 
 $href = $attributes['href'] ?? null;
 @endphp

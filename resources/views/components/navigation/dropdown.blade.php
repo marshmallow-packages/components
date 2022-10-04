@@ -2,7 +2,7 @@
     x-on:mouseover.away.debounce="open = false" x-on:mouseover.enter.debounce.100ms="open = true">
 
     <div x-on:click="open = ! open"
-        class="block px-4 py-3 mx-auto text-sm font-bold text-center text-gray-700 uppercase cursor-pointer md:px-2 xl:px-3 2xl:px-4 group hover:text-gold-500 hover:bg-gold-50 group-hover:text-gold-500">
+        class="block px-4 py-3 mx-auto text-sm font-bold text-center text-gray-700 uppercase cursor-pointer md:px-2 xl:px-3 2xl:px-4 group hover:text-primary-500 hover:bg-primary-50 group-hover:text-primary-500">
         {{ $trigger }}
         <i class="ml-2 fas" :class="{ ' fa-chevron-down': !open, ' fa-chevron-up': open }"></i>
     </div>

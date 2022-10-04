@@ -1,42 +1,29 @@
-@props(['required' => null, 'type' => 'text', 'value' => null, 'autofocus' => null, 'width' => 'full', 'hideLabel' => false, 'options' => []])
-
-@php
-
-$placeholder = $attributes['placeholder'];
-
-if (!$required) {
-    if (!$hideLabel) {
-        $placeholder .= ' (optioneel)';
-    }
-    $required = false;
-}
-
-@endphp
-
+@props(['state' => null, 'required' => null, 'width' => 'full', 'value' => null, 'autofocus' => null, 'options', 'question'])
 
 <div class="relative w-full">
 
-    @if (!$hideLabel)
-        <x-mm-label :required="$required" for="{{ $attributes['id'] }}"> {{ $attributes['placeholder'] ?? ' ' }}
-        </x-mm-label>
-    @endif
+    <x-mm-tooltip-label :required="$required" for="{{ $attributes['id'] }}" :placeholder="$attributes['placeholder']" :question="$question" />
 
-    <div class="mt-2 space-y-4 md:mt-4">
-        @foreach ($options as $option)
-            <div class="flex items-center ml-2 ">
-                <input wire:model="{{ $attributes['name'] }}" id="id_{{ $attributes['id'] }}_{{ $option['id'] }}"
-                    name="{{ $attributes['name'] }}" type="radio" value="{{ $option['id'] }}"
-                    @if ($attributes['x-on:change']) x-on:change="{{ $attributes['x-on:change'] }}" @endif
-                    class="w-4 h-4 border-gray-300 peer text-gold-500 focus:ring-gold-500/30">
-                <label for="id_{{ $attributes['id'] }}_{{ $option['id'] }}"
-                    class="block ml-3 text-sm font-medium text-gray-700 peer-focus:font-semibold peer-checked:font-semibold">
-                    {{ $option['title'] }}
-                    @if ($option['tooltip'])
-                        <x-mm-tooltip id="{{ $option['id'] . md5($option['tooltip']) }}" :content="$option['tooltip']" />
-                    @endif
-                </label>
-            </div>
+    <fieldset class="mt-2 space-y-3 ">
+
+        @foreach ($options as $value => $option)
+            @if ($value !== '' && !is_null($value))
+                <div class="flex items-center ml-2 group ">
+                    <input type="radio" id="{{ $attributes['name'] }}.{{ $value }}"
+                        wire:model="{{ $attributes['name'] }}" name="{{ $attributes['name'] }}.{{ $value }}"
+                        value="{{ $value }}"
+                        class="w-4 h-4 border-gray-300 peer text-primary-500 focus:ring-primary-500/30 group-hover:border-primary-600">
+                    <label for="{{ $attributes['name'] }}.{{ $value }}"
+                        class="block ml-3 text-sm font-normal text-gray-700 cursor-pointer peer-focus:font-medium">
+                        {{ $option }}
+                    </label>
+                </div>
+            @endif
         @endforeach
-        <x-mm-error for="id_{{ $attributes['id'] }}_{{ $option['id'] }}" />
+    </fieldset>
+
+    <div class="mt-2">
+        <x-mm-error for="{{ $attributes['id'] }}" />
     </div>
+
 </div>

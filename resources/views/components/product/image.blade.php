@@ -25,7 +25,7 @@
                 @if ($image->getCustomProperty('title'))
                     <div
                         class="absolute inset-x-0 bottom-0 hidden py-2 bg-white bg-opacity-75 border border-t-0 rounded-b-lg group-hover:block">
-                        <p class="mx-auto font-sans font-bold text-center lastDot-gold-500">
+                        <p class="mx-auto font-sans font-bold text-center lastDot-primary-500">
                             {{ $image->getCustomProperty('title') }}</p>
                         <p class="mx-auto text-sm text-center">
                             {{ $image->getCustomProperty('description') }}
@@ -48,7 +48,7 @@
                     <li class="relative w-auto h-auto px-1 py-2 snap-start " role="option">
 
                         <button
-                            class="relative flex flex-col items-center justify-center w-24 h-24 p-2 rounded-md focus:ring-2 ring-0 focus:ring-gold-500 focus:outline-none focus:ring-opacity-50 "
+                            class="relative flex flex-col items-center justify-center w-24 h-24 p-2 rounded-md focus:ring-2 ring-0 focus:ring-primary-500 focus:outline-none focus:ring-opacity-50 "
                             type="button" x-on:click="setActive({{ $key }})" x-bind="focusableWhenVisible">
 
                             <span class="sr-only">
@@ -59,7 +59,7 @@
                             </span>
 
                             <span x-show="activeId == {{ $key }}"
-                                class="absolute inset-0 rounded-md pointer-events-none ring-gold-500 ring-2 ring-offset-1"
+                                class="absolute inset-0 rounded-md pointer-events-none ring-primary-500 ring-2 ring-offset-1"
                                 aria-hidden="true"></span>
                         </button>
                     </li>
@@ -68,7 +68,7 @@
             </ul>
 
             <button x-on:click="prev" x-show="imageCount > 4 && !atMin"
-                class="absolute inset-y-0 !ml-0 left-0 text-4xl bg-white bg-opacity-60 text-gold-500 px-1 hover:text-white hover:bg-gold-500 focus:outline-none hover:bg-opacity-60"
+                class="absolute inset-y-0 !ml-0 left-0 text-4xl bg-white bg-opacity-60 text-primary-500 px-1 hover:text-white hover:bg-primary-500 focus:outline-none hover:bg-opacity-60"
                 x-transition>
                 <span aria-hidden="true">❮</span>
                 <span class="sr-only">Skip to previous slide</span>
@@ -76,7 +76,7 @@
 
 
             <button x-on:click="next" x-show="imageCount > 4 && !atMax"
-                class="absolute inset-y-0 right-0 px-1 text-4xl bg-white text-gold-500 bg-opacity-60 hover:text-white hover:bg-gold-500 hover:bg-opacity-60 "
+                class="absolute inset-y-0 right-0 px-1 text-4xl bg-white text-primary-500 bg-opacity-60 hover:text-white hover:bg-primary-500 hover:bg-opacity-60 "
                 x-transition>
                 <span aria-hidden="true">❯</span>
                 <span class="sr-only">Skip to next slide</span>

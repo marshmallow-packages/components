@@ -11,7 +11,7 @@ if (!$required) {
     $required = false;
 }
 
-$class = 'appearance-none border-gray-400/40 placeholder:text-sm text-gray-700 focus:border-gold-300 disabled:italic disabled:bg-gray-300/20 bg-white/50 relative py-2.5 focus:ring focus:ring-gold-200 focus:ring-opacity-50 rounded-md text-[0.9rem] w-full';
+$class = 'appearance-none border-gray-400/40 placeholder:text-sm text-gray-700 focus:border-primary-300 disabled:italic disabled:bg-gray-300/20 bg-white/50 relative py-2.5 focus:ring focus:ring-primary-200 focus:ring-opacity-50 rounded-md text-[0.9rem] w-full';
 
 @endphp
 

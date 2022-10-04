@@ -43,9 +43,9 @@ $loop_count = 0;
                 <input wire:model="{{ $attributes['name'] }}" id="id_{{ $attributes['id'] }}_{{ $option->id }}"
                     x-on:change="checkedValue = $event.target.value;" name="{{ $attributes['name'] }}" type="radio"
                     value="{{ $option->id }}"
-                    class="hidden w-4 h-4 border-gray-300 peer text-gold-500 focus:ring-gold-500/30" />
+                    class="hidden w-4 h-4 border-gray-300 peer text-primary-500 focus:ring-primary-500/30" />
                 <label for="id_{{ $attributes['id'] }}_{{ $option->id }}"
-                    class="relative block w-full overflow-hidden text-sm font-medium text-gray-700 transition duration-500 ease-in-out transform border shadow cursor-pointer grow hover:shadow-md before:hover:-translate-y-1 before:peer-checked:-translate-y-1 peer-checked:ring-gold-500 peer-checked:ring-opacity-40 hover:scale-105 rounded-xl border-gray-300/50 peer-focus:font-semibold peer-checked:shadow-md hover:border-2 peer-checked:border-2 peer-checked:ring-2 peer-checked:border-gold-500 peer-hover:border-gold-400 ">
+                    class="relative block w-full overflow-hidden text-sm font-medium text-gray-700 transition duration-500 ease-in-out transform border shadow cursor-pointer grow hover:shadow-md before:hover:-translate-y-1 before:peer-checked:-translate-y-1 peer-checked:ring-primary-500 peer-checked:ring-opacity-40 hover:scale-105 rounded-xl border-gray-300/50 peer-focus:font-semibold peer-checked:shadow-md hover:border-2 peer-checked:border-2 peer-checked:ring-2 peer-checked:border-primary-500 peer-hover:border-primary-400 ">
 
                     <img class="object-cover w-full h-full cursor-pointer " src="{{ $option->thumbnail_path }}">
 
@@ -61,14 +61,14 @@ $loop_count = 0;
         <div class="relative z-20 flex w-full py-4 bg-gradient-to-b from-transparent via-white/80 to-transparent"
             :class="{ '-mt-8': !expanded }">
             <div x-show="!expanded" x-cloak class="mx-auto">
-                <x-mm-button class="mt-1 !px-4 py-2 h-8 font-semibold mx-auto !text-sm hover:text-gold-500"
+                <x-mm-button class="mt-1 !px-4 py-2 h-8 font-semibold mx-auto !text-sm hover:text-primary-500"
                     x-on:click="expanded = !expanded">
                     {{ __('Laat meer zien') }}
                     <i class="ml-2 text-white fa-solid fa-arrow-down "></i>
                 </x-mm-button>
             </div>
             <div x-show="expanded" x-cloak class="mx-auto">
-                <x-mm-button class="mt-1 !px-4 py-2 h-8 font-semibold mx-auto !text-sm hover:text-gold-500"
+                <x-mm-button class="mt-1 !px-4 py-2 h-8 font-semibold mx-auto !text-sm hover:text-primary-500"
                     x-on:click="expanded = !expanded">
                     {{ __('Laat minder zien') }}
                     <i class="ml-2 text-white fa-solid fa-arrow-up"></i>
