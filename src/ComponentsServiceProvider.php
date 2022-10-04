@@ -28,24 +28,50 @@ class ComponentsServiceProvider extends ServiceProvider
      */
     protected function configureComponents()
     {
-        $this->callAfterResolving(BladeCompiler::class, function () {
-            $this->registerComponent('button');
-            $this->registerComponent('outline-button');
-            $this->registerComponent('secondary-button');
-            $this->registerComponent('white-button');
-            $this->registerComponent('default-input');
-            $this->registerComponent('label');
-            $this->registerComponent('input');
-            $this->registerComponent('error');
-            $this->registerComponent('email');
-            $this->registerComponent('number');
-            $this->registerComponent('password');
-            $this->registerComponent('select');
-            $this->registerComponent('radio');
-            $this->registerComponent('checkbox');
-            $this->registerComponent('textarea');
 
+        $this->callAfterResolving(BladeCompiler::class, function () {
+
+            /**
+             * Navigation
+             */
+            $this->registerComponent('navigation.cart');
+            $this->registerComponent('navigation.dropdown-link');
+            $this->registerComponent('navigation.dropdown');
+            $this->registerComponent('navigation.link');
+
+            /**
+             * Products
+             */
+            $this->registerComponent('product.image');
+
+            /**
+             * Form fields
+             */
+            $this->registerComponent('button');
+            $this->registerComponent('checkbox');
+            $this->registerComponent('default-authentication-card');
+            $this->registerComponent('default-input');
+            $this->registerComponent('divider');
+            $this->registerComponent('email');
+            $this->registerComponent('error');
             $this->registerComponent('errors');
+            $this->registerComponent('image-modal');
+            $this->registerComponent('input');
+            $this->registerComponent('label');
+            $this->registerComponent('link');
+            $this->registerComponent('list-image');
+            $this->registerComponent('number');
+            $this->registerComponent('outline-button');
+            $this->registerComponent('password');
+            $this->registerComponent('radio');
+            $this->registerComponent('secondary-button');
+            $this->registerComponent('select');
+            $this->registerComponent('textarea');
+            $this->registerComponent('tooltip-label');
+            $this->registerComponent('tooltip');
+            $this->registerComponent('usp-fontawesome');
+            $this->registerComponent('white-button');
+            $this->registerComponent('wysiwyc');
         });
     }
 
@@ -67,7 +93,7 @@ class ComponentsServiceProvider extends ServiceProvider
      */
     protected function configurePublishing()
     {
-        if (! $this->app->runningInConsole()) {
+        if (!$this->app->runningInConsole()) {
             return;
         }
 
