@@ -13,6 +13,11 @@
             "name": "Marshmallow",
             "email": "lars@marshmallow.dev",
             "role": "Developer"
+        },
+        {
+            "name": "Marshmallow",
+            "email": "stef@marshmallow.dev",
+            "role": "Developer"
         }
     ],
     "require": {
