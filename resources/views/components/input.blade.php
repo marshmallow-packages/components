@@ -30,7 +30,6 @@ if (!$required) {
     }
     $required = false;
 }
-$required = false;
 
 $class = $attributes->get('class') ?? 'w-full';
 
