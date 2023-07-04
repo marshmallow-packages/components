@@ -26,7 +26,7 @@ if ($question) {
     @if ($has_info)
         <x-mm-tooltip content="{!! $question_info !!}" class="z-10">
             <div class="mb-0.5 text-sm cursor-pointer  hover:text-primary-600 text-primary-500">
-                <i class="fa-duotone fa-info-circle "></i>
+                <i class="fa-solid fa-info-circle "></i>
             </div>
         </x-mm-tooltip>
     @endif

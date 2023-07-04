@@ -8,6 +8,6 @@ $id = $id ?? md5($content);
     @if ((string) $slot)
         {{ $slot }}
     @else
-        <i class="fa-duotone fa-circle-info"></i>
+        <i class="fa-solid fa-circle-info"></i>
     @endif
 </span>

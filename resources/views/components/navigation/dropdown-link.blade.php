@@ -1,11 +1,1 @@
-<li>
-
-    <a
-        {{ $attributes->merge(['class' => 'text-sm font-medium cursor-pointer hover:text-primary-500 group transition']) }}>
-        <i
-            class="mr-2.5 transition duration-200 ease-out transform group-hover:translate-x-1 fa-xs fa-regular fa-chevron-right"></i>
-        <span class="font-normal">
-            {{ $slot }}
-        </span>
-    </a>
-</li>
+<a {{ $attributes->merge(['class' => 'block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out']) }}>{{ $slot }}</a>

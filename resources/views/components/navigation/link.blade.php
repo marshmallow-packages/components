@@ -1,14 +1,12 @@
-@props(['item' => $item])
+@props(['active' => false])
 
-<a href="{{ $item->route_path }}" target="{{ $item->target }}"
-    class="block px-2 xxl:px-4 xl:px-3 mx-auto cursor-pointer text-center py-3 font-sans uppercase font-bold text-sm text-gray-700 text-sm  @if ($item->active) text-white disabled cursor-default bg-dark  @else hover:text-primary-500 hover:bg-primary-50 @endif">
+@php
+    $default_class = 'inline-flex items-center px-1 pt-1 tracking-wide text-[15px] font-semibold leading-5 focus:outline-none transition duration-150 ease-in-out';
+    $active_class = 'text-primary-600 cursor-default';
+    $inactive_class = 'hover:text-opacity-50 text-gray-800';
+    $classes = $default_class . ' ' . ($active ? $active_class : $inactive_class);
+@endphp
 
-
-    <span class="sr-only">{{ $item->name }}</span>
-    @if ($item['icon'])
-        <i class="{!! $item['data']['icon'] !!}"></i>
-    @endif
-    @if (!$item['icon_only'])
-        {{ $item->name }}
-    @endif
+<a {{ $attributes->merge(['class' => $classes]) }}>
+    {{ $slot }}
 </a>

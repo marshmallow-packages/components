@@ -38,6 +38,7 @@ class ComponentsServiceProvider extends ServiceProvider
             $this->registerComponent('navigation.dropdown-link');
             $this->registerComponent('navigation.dropdown');
             $this->registerComponent('navigation.link');
+            $this->registerComponent('navigation.responsive-nav-link');
 
             /**
              * Products

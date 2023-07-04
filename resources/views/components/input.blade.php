@@ -111,7 +111,7 @@ if ($question) {
 
         @error($attributes['id'])
             <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                <i class="text-red-500 fa-duotone fa-circle-exclamation"></i>
+                <i class="text-red-500 fa-solid fa-circle-exclamation"></i>
             </div>
         @enderror
 

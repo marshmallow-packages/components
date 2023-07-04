@@ -4,7 +4,7 @@
     <div {{ $attributes->merge(['class' => 'mt-1 text-sm']) }}>
         <span {{ $attributes->merge(['class' => ' text-sm text-red-500']) }}>
             @if ($icon)
-                <i class="mr-1 fa-duotone fa-circle-exclamation"></i>
+                <i class="mr-1 fa-solid fa-circle-exclamation"></i>
             @endif
             {{ $message }}
         </span>
