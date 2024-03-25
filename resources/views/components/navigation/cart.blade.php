@@ -15,7 +15,7 @@
         class="absolute z-[80] py-4 left-0 sm:left-[inherit] md:right-0 shadow-xl w-full px-2 gap-x-4 lg:max-w-1/3 mx-auto sm:px-4 md:px-4 bg-white"
         x-cloak>
 
-        <livewire:cart.navigation-cart />
+        {{-- <livewire:cart.navigation-cart /> --}}
     </div>
 
 </div>
