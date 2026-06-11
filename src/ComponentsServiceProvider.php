@@ -72,7 +72,7 @@ class ComponentsServiceProvider extends ServiceProvider
             $this->registerComponent('tooltip');
             $this->registerComponent('usp-fontawesome');
             $this->registerComponent('white-button');
-            $this->registerComponent('wysiwyc');
+            $this->registerComponent('wysiwyg');
         });
     }
 
