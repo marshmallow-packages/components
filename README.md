@@ -1,31 +1,68 @@
-# Extendend Laravel Blade Components for Marshmallow
+![alt text](https://marshmallow.dev/cdn/media/logo-red-237x46.png "marshmallow.")
+
+# Extended Laravel Blade Components for Marshmallow
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/marshmallow/components.svg?style=flat-square)](https://packagist.org/packages/marshmallow/components)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/marshmallow-packages/components/run-tests?label=tests)](https://github.com/marshmallow-packages/components/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/marshmallow-packages/components/Check%20&%20fix%20styling?label=code%20style)](https://github.com/marshmallow-packages/components/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/marshmallow/components.svg?style=flat-square)](https://packagist.org/packages/marshmallow/components)
 
-Reuseable blade components for Laravel by Marshmallow
+A collection of reusable Blade components for Laravel by Marshmallow — form fields, navigation elements and a few product/UI helpers, all registered under the `mm-` prefix.
 
 ## Installation
 
-You can install the package via composer:
+Install the package via Composer:
 
 ```bash
 composer require marshmallow/components
 ```
 
-You can publish and run the components with:
+The package is auto-discovered, so there is nothing else to register. The components become available immediately.
+
+Optionally, publish the views to your application so you can customise the markup:
 
 ```bash
 php artisan vendor:publish --provider="Marshmallow\Components\ComponentsServiceProvider" --tag="marshmallow-views"
-php artisan migrate
 ```
+
+Published views are written to `resources/views/vendor/marshmallow`.
+
+## Usage
+
+Every component is registered with the `mm-` prefix and can be used directly in your Blade templates:
+
+```blade
+<x-mm-button href="/checkout">Continue</x-mm-button>
+
+<x-mm-input name="email" type="email" />
+
+<x-mm-errors />
+```
+
+### Available components
+
+**Form fields**
+
+`mm-button`, `mm-checkbox`, `mm-default-authentication-card`, `mm-default-input`,
+`mm-divider`, `mm-email`, `mm-error`, `mm-errors`, `mm-image-modal`, `mm-input`,
+`mm-label`, `mm-link`, `mm-list-image`, `mm-number`, `mm-outline-button`,
+`mm-password`, `mm-radio`, `mm-secondary-button`, `mm-select`, `mm-textarea`,
+`mm-tooltip-label`, `mm-tooltip`, `mm-usp-fontawesome`, `mm-white-button`,
+`mm-wysiwyg`.
+
+**Navigation**
+
+`mm-navigation.cart`, `mm-navigation.dropdown-link`, `mm-navigation.dropdown`,
+`mm-navigation.link`, `mm-navigation.responsive-nav-link`.
+
+**Products**
+
+`mm-product.image`.
+
+You can inspect or override any of these by publishing the views (see Installation) and editing the files in `resources/views/vendor/marshmallow/components`.
 
 ## Testing
 
 ```bash
-composer test
+composer test-coverage
 ```
 
 ## Changelog
@@ -38,12 +75,12 @@ Please see [CONTRIBUTING](.github/CONTRIBUTING.md) for details.
 
 ## Security Vulnerabilities
 
-Please review [our security policy](../../security/policy) on how to report security vulnerabilities.
+Please review [our security policy](.github/SECURITY.md) on how to report security vulnerabilities.
 
 ## Credits
 
--   [Marshmallow](https://github.com/ltkort)
--   [All Contributors](../../contributors)
+- [Marshmallow](https://github.com/marshmallow-packages)
+- [All Contributors](https://github.com/marshmallow-packages/components/contributors)
 
 ## License
 
